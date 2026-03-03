@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dentist Houston Texas | Cory Logan DDS</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* dental-14 template blue theme */
+    --bg-page: #f0f2f5;
+    --cyan: #00d4c8;
+    --cyan-bright: #00e6d9;
+    --blue-medium: #5b7fbf;
+    --blue-soft: #6889c4;
+    --navy: #0e1b3d;
+    --navy-deep: #0a1530;
+    --white: #ffffff;
+    --text-navy: #0e1b3d;
+    --text-white: #ffffff;
+    --text-cyan: #00d4c8;
+
+    --radius: 24px;
+    --gap: 16px;
+    --pad-outer: 20px;
+    --pad-card: 32px;
+
+    --font: 'DM Sans', sans-serif;
+    --body-size: 15px;
+    --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font);
+    background-color: var(--bg-page);
+    color: var(--text-navy);
+    font-size: var(--body-size);
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+    padding: var(--pad-outer);
+    min-height: 100vh;
+  }
+
+  /* Navigation */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px 24px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-navy);
+  }
+
+  .nav-logo-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: none;
+    list-style: none;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-navy);
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cyan);
+    transition: width var(--transition);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-navy);
+    border-radius: 2px;
+    transition: var(--transition);
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 8px 24px;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--text-navy);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(13, 13, 13, 0.08);
+  }
+
+  /* Grid Layout */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+  }
+
+  /* Card Base */
+  .card {
+    border-radius: var(--radius);
+    padding: var(--pad-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04), inset 0 2px 4px rgba(0, 0, 0, 0.03);
+  }
+
+  .card:hover {
+    transform: scale(0.99);
+  }
+
+  /* Card: Hero Green */
+  .card-hero-cyan {
+    background-color: var(--cyan);
+    color: var(--text-navy);
+    min-height: 380px;
+  }
+
+  .card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    opacity: 0.8;
+  }
+
+  .card-hero-cyan .card-label {
+    color: var(--navy);
+  }
+
+  .card-display-text {
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+
+  .card-hero-cyan .card-display-text {
+    color: var(--navy);
+  }
+
+  .card-hero-cyan .card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 40px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .card-meta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.7;
+    line-height: 1.6;
+  }
+
+  /* Card: Ink Tooth */
+  .card-tooth {
+    background-color: var(--navy);
+    min-height: 280px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tooth-svg {
+    width: 80px;
+    height: 100px;
+  }
+
+  /* Card: Pink Secondary Hero */
+  .card-hero-blue {
+    background-color: var(--blue-medium);
+    color: var(--text-white);
+    min-height: 280px;
+  }
+
+  .card-hero-blue .card-label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .card-hero-blue .card-display-text {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--text-white);
+    margin-bottom: 32px;
+  }
+
+  .card-appointment {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+  }
+
+  .card-appointment strong {
+    color: var(--text-white);
+    font-weight: 600;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-family: var(--font);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+    text-align: center;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-cyan {
+    background-color: var(--cyan);
+    color: var(--navy);
+  }
+
+  .btn-navy {
+    background-color: var(--navy);
+    color: var(--text-white);
+  }
+
+  /* Services Section - Full Width Redesign */
+  .services-section {
+    margin-top: var(--gap);
+    background-color: var(--navy);
+    border-radius: var(--radius);
+    padding: var(--pad-card);
+  }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .services-header h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 500;
+    color: var(--text-white);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .services-header .label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-cyan);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+  }
+
+  .service-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: background-color var(--transition);
+  }
+
+  .service-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .service-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .service-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-white);
+  }
+
+  .service-item-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-cyan);
+    opacity: 0.6;
+  }
+
+  .service-item ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .service-item li {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Doctor Section */
+  .doctor-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+    margin-top: var(--gap);
+  }
+
+  .card-doctor-image {
+    background-color: var(--cyan);
+    height: 380px;
+    padding: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-doctor-image img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) contrast(110%);
+    mix-blend-mode: multiply;
+    border-radius: 12px;
+  }
+
+  .card-doctor-info {
+    background-color: var(--navy);
+    color: var(--text-white);
+    height: 380px;
+    justify-content: flex-start;
+    gap: 24px;
+  }
+
+  .card-doctor-info .card-display-text {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--text-white);
+    margin-bottom: 0;
+  }
+
+  .doctor-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 0;
+  }
+
+  .doctor-detail {
+    display: flex;
+    gap: 16px;
+    font-size: 0.85rem;
+  }
+
+  .doctor-detail-label {
+    font-weight: 600;
+    color: var(--cyan);
+    min-width: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.7rem;
+  }
+
+  .doctor-detail-value {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* About Section */
+  .about-section {
+    margin-top: var(--gap);
+  }
+
+  .card-about {
+    background-color: var(--white);
+    min-height: 200px;
+  }
+
+  .card-about .card-display-text {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 20px;
+  }
+
+  .about-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    opacity: 0.8;
+    max-width: 800px;
+  }
+
+  /* Office Section */
+  .office-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+    margin-top: var(--gap);
+  }
+
+  .card-office-image {
+    background-color: var(--blue-medium);
+    min-height: 200px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .card-office-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(110%);
+    mix-blend-mode: multiply;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    margin-top: var(--gap);
+  }
+
+  .card-contact {
+    background-color: var(--cyan);
+    color: var(--navy);
+    min-height: 280px;
+  }
+
+  .card-contact .card-display-text {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 32px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contact-item {
+    font-size: 0.9rem;
+  }
+
+  .contact-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  .contact-value {
+    font-weight: 500;
+  }
+
+  .contact-value a {
+    color: var(--navy);
+    text-decoration: none;
+  }
+
+  .contact-value a:hover {
+    text-decoration: underline;
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    :root {
+      --pad-outer: 32px;
+      --gap: 16px;
+      --pad-card: 36px;
+    }
+
+    .nav-hamburger {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+    }
+
+    .grid {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: auto;
+    }
+
+    .card-hero-cyan {
+      grid-column: 1 / 4;
+      grid-row: 1 / 3;
+      min-height: 440px;
+    }
+
+    .card-tooth {
+      grid-column: 4 / 5;
+      grid-row: 1 / 3;
+      min-height: auto;
+    }
+
+    .card-hero-blue {
+      grid-column: 5 / 7;
+      grid-row: 1 / 3;
+      min-height: auto;
+    }
+
+    .doctor-section {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .office-section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    :root {
+      --pad-outer: 40px;
+      --gap: 18px;
+      --pad-card: 40px;
+    }
+
+    .grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .card-hero-cyan {
+      grid-column: 1 / 6;
+      grid-row: 1 / 3;
+      min-height: 520px;
+    }
+
+    .card-tooth {
+      grid-column: 6 / 8;
+      grid-row: 1 / 3;
+    }
+
+    .card-hero-blue {
+      grid-column: 8 / 13;
+      grid-row: 1 / 3;
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    :root {
+      --pad-card: 48px;
+    }
+
+    .card-hero-cyan {
+      min-height: 580px;
+    }
+
+    .card-display-text {
+      font-size: clamp(3.5rem, 6vw, 6rem);
+    }
+  }
+
+  @media (min-width: 1440px) {
+    body {
+      max-width: 1520px;
+      margin: 0 auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="#" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 4C12.5 4 10 5.5 9 7C7.5 9.5 8 12 8.5 14C9.2 16.8 10 19 10.5 22C11 25 11.5 28 12.5 28C13.5 28 14 25 14.5 22C15 19.5 15.5 18 16 18C16.5 18 17 19.5 17.5 22C18 25 18.5 28 19.5 28C20.5 28 21 25 21.5 22C22 19 22.8 16.8 23.5 14C24 12 24.5 9.5 23 7C22 5.5 19.5 4 16 4Z" fill="var(--text-navy)" stroke="var(--text-navy)" stroke-width="0.5"/>
+      </svg>
+      <span class="nav-logo-text">Cory Logan DDS</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#doctor">Dr. Logan</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="nav-hamburger" aria-label="Toggle menu" onclick="document.querySelector('.mobile-menu').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="#services">Services</a>
+    <a href="#doctor">Dr. Logan</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <main>
+    <div class="grid" id="services">
+
+      <!-- Hero Green Card -->
+      <div class="card card-hero-cyan">
+        <div>
+          <div class="card-label">Accepting New Patients Since 2002</div>
+          <div class="card-display-text">
+            Complete.<br>
+            Cosmetic.<br>
+            Houston.<br>
+            Dentistry.
+          </div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-meta">
+            Mon – Fri: 8am – 5pm<br>
+            Houston, Texas
+          </div>
+          <div class="card-meta">
+            corylogandds.com<br>
+            (713) 522-6660
+          </div>
+        </div>
+      </div>
+
+      <!-- Ink Tooth Card -->
+      <div class="card card-tooth">
+        <svg class="tooth-svg" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 8C30 8 23 12 20 16C15 23 17 30 18 35C19.5 42 22 48 23.5 57C25 66 26 78 29 78C32 78 33 66 34.5 57C36 49 38 45 40 45C42 45 44 49 45.5 57C47 66 48 78 51 78C54 78 55 66 56.5 57C58 48 60.5 42 62 35C63 30 65 23 60 16C57 12 50 8 40 8Z" fill="var(--cyan)" />
+          <ellipse cx="32" cy="24" rx="5" ry="4" fill="var(--navy-deep)" opacity="0.15"/>
+          <ellipse cx="48" cy="24" rx="5" ry="4" fill="var(--navy-deep)" opacity="0.15"/>
+          <rect x="36" y="30" width="8" height="3" rx="1.5" fill="var(--navy-deep)" opacity="0.1"/>
+        </svg>
+      </div>
+
+      <!-- Pink Secondary Hero Card -->
+      <div class="card card-hero-blue">
+        <div>
+          <div class="card-label">Schedule Your Visit</div>
+          <div class="card-display-text">
+            Serving<br>Downtown,<br>Midtown &<br>River Oaks.
+          </div>
+        </div>
+        <div>
+          <div class="card-appointment">Heights, West U, Bellaire & <strong>surrounding areas</strong></div>
+          <a href="tel:713-522-6660" class="btn btn-cyan">Call to Book</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Services Section - Full Width -->
+    <section class="services-section">
+      <div class="services-header">
+        <h2>Comprehensive &<br>Complete Dentistry</h2>
+        <span class="label">Our Services</span>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-item-header">
+            <h3>Preventative Care</h3>
+            <span class="service-item-number">01</span>
+          </div>
+          <ul>
+            <li>Routine Exams</li>
+            <li>Digital X-Rays</li>
+            <li>Cleanings</li>
+          </ul>
+        </div>
+
+        <div class="service-item">
+          <div class="service-item-header">
+            <h3>Restorative</h3>
+            <span class="service-item-number">02</span>
+          </div>
+          <ul>
+            <li>Crowns & Bridges</li>
+            <li>Implant Services</li>
+            <li>Fillings & Bonding</li>
+          </ul>
+        </div>
+
+        <div class="service-item">
+          <div class="service-item-header">
+            <h3>Cosmetic</h3>
+            <span class="service-item-number">03</span>
+          </div>
+          <ul>
+            <li>Whitening</li>
+            <li>Veneers</li>
+            <li>Orthodontics</li>
+          </ul>
+        </div>
+
+        <div class="service-item">
+          <div class="service-item-header">
+            <h3>Periodontal</h3>
+            <span class="service-item-number">04</span>
+          </div>
+          <ul>
+            <li>Scaling</li>
+            <li>Root Planing</li>
+            <li>Maintenance</li>
+          </ul>
+        </div>
+
+        <div class="service-item">
+          <div class="service-item-header">
+            <h3>Specialty</h3>
+            <span class="service-item-number">05</span>
+          </div>
+          <ul>
+            <li>Under Armour Mouthwear</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctor Section -->
+    <div class="doctor-section" id="doctor">
+      <div class="card card-doctor-image">
+        <img src="assets/dr-cory-logan.jpg" alt="Dr. Cory Logan">
+      </div>
+      <div class="card card-doctor-info">
+        <div>
+          <div class="card-label">Meet Your Dentist</div>
+          <div class="card-display-text">Dr. Cory<br>Logan</div>
+        </div>
+        <div class="doctor-details">
+          <div class="doctor-detail">
+            <span class="doctor-detail-label">Specialty</span>
+            <span class="doctor-detail-value">General & Cosmetic Dentistry</span>
+          </div>
+          <div class="doctor-detail">
+            <span class="doctor-detail-label">Location</span>
+            <span class="doctor-detail-value">Houston, Texas</span>
+          </div>
+          <div class="doctor-detail">
+            <span class="doctor-detail-label">Status</span>
+            <span class="doctor-detail-value">Accepting New Patients</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section" id="about">
+      <div class="card card-about">
+        <div class="card-label">About Our Practice</div>
+        <div class="card-display-text">Revolutionizing Smiles Since 2002</div>
+        <p class="about-text">
+          Our general and cosmetic practice in Houston, Texas has been revolutionizing smiles for Houston's Downtown, Midtown, River Oaks, Heights, West University, Bellaire and the surrounding areas since 2002. We offer a full array of dental and cosmetic dentistry services to help you maintain healthy teeth. Our office takes pride and is committed to providing the highest quality of dental care available with the personalized attention that you deserve.
+        </p>
+        <p class="about-text" style="margin-top: 16px;">
+          We strive on excellence and provide the most comprehensive and complete care to all of our clients. Working together, we help our clients make the most informed decisions for their life long dental care.
+        </p>
+      </div>
+    </div>
+
+    <!-- Office Images Section -->
+    <div class="office-section">
+      <div class="card card-office-image">
+        <img src="assets/office-1.jpg" alt="Our Office">
+      </div>
+      <div class="card card-office-image">
+        <img src="assets/office-2.jpg" alt="Our Office">
+      </div>
+      <div class="card card-office-image">
+        <img src="assets/office-3.jpg" alt="Our Office">
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section" id="contact">
+      <div class="card card-contact">
+        <div>
+          <div class="card-label">Get In Touch</div>
+          <div class="card-display-text">Contact Us</div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:713-522-6660">(713) 522-6660</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Hours</div>
+            <div class="contact-value">Monday — Friday: 8:00 AM — 5:00 PM</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Houston, Texas</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Areas Served</div>
+            <div class="contact-value">Downtown, Midtown, River Oaks, Heights, West University, Bellaire</div>
+          </div>
+        </div>
+        <div style="margin-top: 32px;">
+          <a href="tel:713-522-6660" class="btn btn-navy">Call to Book Appointment</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
